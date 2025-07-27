@@ -92,7 +92,7 @@ deb ${MIRROR}/debian/ ${CODENAME}-updates main contrib non-free non-free-firmwar
         --customize-hook='chroot "$1" systemctl enable prekvm' \
         --customize-hook='chroot "$1" mkdir -p --mode=0755 /usr/share/keyrings' \
         --customize-hook='chroot "$1" sh -c "curl -fsSL https://pkgs.tailscale.com/stable/debian/bookworm.noarmor.gpg | tee /usr/share/keyrings/tailscale-archive-keyring.gpg >/dev/null"' \
-        --customize-hook='chroot "$1" sh -c "curl -fsSL https://pkgs.tailscale.com/stable/debian/bookworm.tailscale-keyring.list | sudo tee /etc/apt/sources.list.d/tailscale.list"' \
+        --customize-hook='chroot "$1" sh -c "curl -fsSL https://pkgs.tailscale.com/stable/debian/bookworm.tailscale-keyring.list | tee /etc/apt/sources.list.d/tailscale.list"' \
         --customize-hook='chroot "$1" apt update' \
         --customize-hook='chroot "$1" sh -c "apt install -y tailscale=1.80.3"' \
         --include="${BASE_PACKAGE} ${DESKTOP_PACKAGE} ${KVM_PACKAGE} ${USER_PACKAGE}" >./build/rootfs.tar
